@@ -1,0 +1,12 @@
+{
+  "name": "02-blackjac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Victor A. Duran <vicduran3d@hotmail.com>",
+  "license": "ISC"
+}
