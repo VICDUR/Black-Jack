@@ -15,10 +15,10 @@
     </header>
 
     <div class="row mt-2">
-        <div class="col text-center">
-            <button class="btn btn-danger">Nuevo Juego</button>
-            <button class="btn btn-primary">Pedir carta</button>
-            <button class="btn btn-primary">Detener</button>
+        <div id="divButton" class="col text-center">
+            <button id="btnNuevo" class="btn btn-danger">Nuevo Juego</button>
+            <button id="btnPedir" class="btn btn-primary ">Pedir carta</button>
+            <button id="btnDetener" class="btn btn-primary">Detener</button>
         </div>
     </div>
 
@@ -26,7 +26,7 @@
         <div class="col">
             <h1>jugador 1 - <small>0</small></h1>
             <div id="jugador-cartas">
-            <img class="carta" src="assets/cartas/10C.png" alt="carta" width="100px">
+            <!-- <img class="carta" src="assets/cartas/10C.png" alt="carta" width="100px"> -->
             </div>
         </div>
     </div>
@@ -35,11 +35,12 @@
         <div class="col">
             <h1>Computadora - <small>0</small></h1>
             <div id="Computadora-cartas">
-            <img class="carta" src="assets/cartas/3C.png" alt="carta" width="100px">
+            <!-- <img class="carta" src="assets/cartas/3C.png" alt="carta" width="100px"> -->
             </div>
         </div>
     </div>
 
+   <script src="assets/js/underscore-min.js"></script>
    <script src="assets/js/juego.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 {
   "name": "02-blackjac",
   "version": "1.0.0",
-  "description": "",
+  "description": "Laboratorio blackJack",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
