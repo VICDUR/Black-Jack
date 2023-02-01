@@ -25,8 +25,9 @@ const cartasJugador = document.querySelector('#jugador-cartas');
 const cartasComputador = document.querySelector('#Computadora-cartas');
 
 
+let nombrePlayer = prompt('Escriba su nombre')
 
-console.log('nombreJugador', nombreJugador)
+nombreJugador.innerText = nombrePlayer;
 
 // Esta funcion crea una nueva deck
 const crearDeck  = () => {
@@ -153,12 +154,11 @@ btnNuevo.addEventListener('click', ()=>{
     puntosJugador = 0;
     puntosComputadora = 0;
     
-    puntosJuegos[0].innerHTML = 0;
-    puntosJuegos[1].innerHTML = 0;
+    puntosJuegos[0].innerText = 0;
+    puntosJuegos[1].innerText = 0;
 
     cartasJugador.innerHTML = '';
     cartasComputador.innerHTML = '';
-    
 
 
     btnPedir.disabled = false;
