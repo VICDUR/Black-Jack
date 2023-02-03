@@ -10,30 +10,16 @@ const  mensaje = (message, icon = 'success') => {
     
     Swal.fire({
         position: 'top-center',
-        icon: icon, //'success',
+        icon: icon, 
         color: '#e8eab3',
         background: 'black',
         title: message,
         showConfirmButton: false,
         timer: 2000,
-        // showClass: {
-        //     popup: 'animate__animated animate__fadeInDown'
-        //   },
           hideClass: {
             popup: 'animate__animated animate__fadeOutUp',
           }
-      })
-
-    // Swal.fire({
-    //     title: message,
-    //     color: '#766a1d',
-    //     showClass: {
-    //       popup: 'animate__animated animate__fadeInDown'
-    //     },
-    //     hideClass: {
-    //       popup: 'animate__animated animate__fadeOutUp',
-    //     }
-    // });
+      });
 };
 
 
@@ -76,7 +62,7 @@ const miModulo = (()=> {
         
         btnNuevo.disabled = true;
         btnPedir.disabled = false;
-        btnDetener.disabled = false;
+        btnDetener.disabled = true;
     };     
 
 
@@ -146,9 +132,10 @@ const miModulo = (()=> {
 
         setTimeout(() => {
             if( puntosComputadora === puntosMinimos ) mensaje('Nadie gana :(', 'error');
-            else if ( puntosMinimos > 21 ) mensaje(`Computadora gano`, 'success');
-            else if ( puntosComputadora > 21 ) mensaje(`Jugador gano`,'success');
-            else mensaje(`Computadora gana genial`,'error' );
+            else if ( puntosMinimos > 21 ) mensaje(`Computadora gano`);
+            else if ( puntosComputadora > 21 ) mensaje(`Jugador gano`);
+            else mensaje(`Computadora gana genial` );
+            
         }, 300);
     };
 
@@ -179,6 +166,7 @@ const miModulo = (()=> {
     btnPedir.addEventListener('click', () => {
 
         btnNuevo.disabled =true;
+        btnDetener.disabled = false;
 
         const carta = pedirCarta(); 
 
