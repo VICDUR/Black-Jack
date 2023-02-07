@@ -13,7 +13,6 @@ construcción de un juego de blackjack de 2 jugadores (**jugador y máquina**) e
 > Inicia el jugador pidiendo carta hasta que estas suman un puntaje de 21 (**se denomina Blackjack, y es la mejor jugada.**) o aproximarse a conseguir dicho número si el jugador se pasa de esos 21 puntos pierde una vez que el jugador este satisfecho del puntaje obtenido, detendrá su juego para dar paso al juego del oponente o máquina, el cual deseara siempre ganarle al jugador.
 
 <br>
-<hr>
 
 ## En este proyecto se tocó los siguientes temas:
 
@@ -23,7 +22,6 @@ construcción de un juego de blackjack de 2 jugadores (**jugador y máquina**) e
 - Minificación de archivo JavaScript para producción
 
 <br>
-<hr>
 
 ## Librerias utilizadas
 
@@ -31,7 +29,6 @@ construcción de un juego de blackjack de 2 jugadores (**jugador y máquina**) e
 -  SweetAlert2
 
  <br>
- <hr>
   
 
  **Aún hay mucho por hacer todavía**  
