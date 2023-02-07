@@ -1,28 +1,3 @@
-/* 
-2C = two of clubs
-2D = two of Diaminds
-2H = two of Hearts
-2S = two of spades
-*/
-
-//  PopUp boxes 
-const  mensaje = (message, icon = 'success') => {
-    
-    Swal.fire({
-        position: 'top-center',
-        icon: icon, 
-        color: '#e8eab3',
-        background: 'black',
-        title: message,
-        showConfirmButton: false,
-        timer: 2000,
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp',
-          }
-      });
-};
-
-
 
 // function anonima auto invocada ---> patron modulo
 const miModulo = (()=> {
@@ -42,14 +17,20 @@ const miModulo = (()=> {
           btnDetener = document.querySelector('#btnDetener');
 
     const puntosJuegos = document.querySelectorAll('small'), 
-          divCartasJugadores = document.querySelectorAll('.divCartas');
+          divCartasJugadores = document.querySelectorAll('.divCartas'),
+          nombreJugador = document.querySelectorAll('h1');
 
 
+    const cambiarNombreJugador = async() => {
+        let jugador = await ingresarNombreJugador();
+        nombreJugador[0].innerText = jugador || 'Jugador' ;
+    };
 
 
     // Esta función inicializa el juego y reseta  los puntajes y limpia la mesa del juego
     const inicializarJuego = ( numJugadores = 2)=>{
 
+        cambiarNombreJugador();
           deck = crearDeck();
 
           puntosJugadores = [];
@@ -82,8 +63,12 @@ const miModulo = (()=> {
                 deck.push( especial + tipo)
             }
         };
-             
+        
+        // function que recibe como argumentos el array de cartas
+        //  y devuelve un array de cartas desorganizadas
+        //  libreria underscore
         return _.shuffle(deck);
+
     };
 
     
@@ -92,27 +77,32 @@ const miModulo = (()=> {
     const pedirCarta = () => {
 
         if (deck.length === 0)  throw 'No hay Cartas en el deck'; // esto nunca va a pasar 
+        console.log(deck)
         return deck.pop();
     };
 
 
-    // pedirCarta();
-    const valorCarta = ( carta ) => {
+    // Esta función da valor a la carta y uno de los plus es que la A puede valer 1 o 11
+    // según el marcador del jugador, hay pendientes otras validaciones futuro;
+    const valorCarta = ( carta, turno  ) => {
+
         let valor =  carta.substring(0, carta.length -1);
+      
         return (isNaN(valor)) 
-            ?  ( valor === 'A') ? 11 : 10 
-            :  valor * 1 ;
+                 ? valor === 'A'
+                     ? (puntosJugadores[turno] <= 10) ? 11 : 1  
+                     : 10
+                 : valor * 1;
     };
 
 
 
     //turno: 0 = primer jugador y el último será la computadora
     const acumularPuntos = ( carta, turno )=>{
-        puntosJugadores[turno] = puntosJugadores[turno] + valorCarta( carta );
+        puntosJugadores[turno] = puntosJugadores[turno] + valorCarta( carta, turno );
         puntosJuegos[turno].innerText= puntosJugadores[turno];
         return puntosJugadores[turno];
     };
-
 
 
 
@@ -125,7 +115,8 @@ const miModulo = (()=> {
     };
 
 
-    // valiga el ganador y renderiza un PopUp con su mensaje
+
+    // valida el ganador y renderiza un PopUp con su mensaje
     const determinarGanador = ()=>{
 
         const [ puntosMinimos, puntosComputadora ] = puntosJugadores;
@@ -174,16 +165,11 @@ const miModulo = (()=> {
 
         crearCarta(carta, 0);
 
-        if ( puntosJugador > 21 ) {
-
+        if ( puntosJugador > 21 || puntosJuegos === 21 ) {
                 turnoComputadora(puntosJugadores[0]);
                 btnNuevo.disabled = false;
-
-        }else if ( puntosJugador === 21 ){
-
-            turnoComputadora(puntosJugadores[0]);
-            btnNuevo.disabled = false;
         };
+
     });
        
 
@@ -195,18 +181,20 @@ const miModulo = (()=> {
         btnPedir.disabled = true;
         turnoComputadora(puntosJugadores[0]); 
         btnDetener.disabled = true; 
+
     });
 
 
     // Eventos boton nuevo
     btnNuevo.addEventListener('click', ()=>{
-       
+
         inicializarJuego();
+
     });
 
-
+    // function  hecha publica
     return {
-        nuevoJuego : inicializarJuego
+        nuevoJuego : inicializarJuego,
     };
 
 })();

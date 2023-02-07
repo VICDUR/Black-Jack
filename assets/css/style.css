@@ -4,6 +4,8 @@ html, body {
     color: white;
 }
 
+
+
 .titulo {
     text-align: center;
     background-color: black;
@@ -24,4 +26,28 @@ html, body {
 #jugador-cartas, #Computadora-cartas {
 
     height: 220px;
+}
+
+.infoPlayer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+h1, h2 {
+    padding-left: 20px;
+}
+
+h2 {
+    color:palegoldenrod;
+}
+
+small {
+    color: palegoldenrod;
+}
+
+.imageTitulo {
+    width: 80px;
 }
